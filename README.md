@@ -16,7 +16,7 @@ Built on [sounddevice](https://python-sounddevice.readthedocs.io/) (PortAudio), 
 ## Installation
 
 ```bash
-pip install git+https://github.com/jgers32/ultramic.git
+pip install ultramic
 ```
 
 For local development:
