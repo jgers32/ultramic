@@ -1,6 +1,6 @@
 [project]
 name = "ultramic"
-version = "0.1.0"
+version = "0.1.2"
 description = "Simple, dependency-light continuous recording library for UltraMic USB microphones — install with pip, works anywhere."
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -27,7 +27,8 @@ dev = ["pytest"]
 viz = ["matplotlib", "scipy", "librosa"]
 
 [project.scripts]
-ultramic-record = "ultramic.cli:main"
+ultramic = "ultramic.cli:main"
+ultramic-viz = "ultramic.viz:main"
 
 [build-system]
 requires = ["hatchling"]

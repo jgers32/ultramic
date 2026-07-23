@@ -1,6 +1,6 @@
 # ultramic
 
-Simple, dependency-light continuous recording library for UltraMic USB microphones — install with pip, works anywhere.
+Simple, dependency-light continuous recording library for Dodotronic Ultramic384k_evo USB microphone; install with pip, works anywhere.
 
 Built on [sounddevice](https://python-sounddevice.readthedocs.io/) (PortAudio), so it runs the same way on Linux, macOS, and Windows — no platform-specific audio backend required.
 
@@ -64,10 +64,9 @@ See `examples/` for more:
 
 ## Visualizing a recording
 
-Generate a waveform, spectrogram, log-scale spectrogram, and mel spectrogram for a recorded file:
-
 ```bash
-python scripts/visualize.py path/to/recording.wav
+pip install "ultramic[viz]"
+ultramic-viz path/to/recording.wav
 ```
 
 Saves a combined figure to `./plots/<filename>.png` (use `--plots-dir` to change the output location).

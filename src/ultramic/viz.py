@@ -1,3 +1,4 @@
+"""generate waveform, spectrogram, log-scale spectorgram and mel spectrogram for a target recorded .wav file"""
 import argparse
 from pathlib import Path
 
@@ -49,15 +50,11 @@ def plot_mel_spectrogram(ax, audio, samplerate, n_mels=128, n_fft=4096, fmax=Non
                               fmax=fmax or samplerate / 2, ax=ax)
     ax.set_title("Mel Spectrogram")
 
-
-def main():
-    parser = argparse.ArgumentParser(description="Visualize a recorded .wav file.")
-    parser.add_argument("wav_path", type=Path)
-    parser.add_argument("--plots-dir", type=Path, default=Path("./plots"))
-    args = parser.parse_args()
-
-    print(f"Reading {args.wav_path}...")
-    audio, samplerate = sf.read(args.wav_path)
+def visualize(wav_path: Path, plots_dir: Path) -> Path:
+    """Generate all four plots for a .wav file and save as a single PNG.
+    Returns the output path."""
+    print(f"Reading {wav_path}...")
+    audio, samplerate = sf.read(wav_path)
     if audio.ndim > 1:
         audio = audio[:, 0]  # take first channel if stereo
     print(f"  {len(audio)} samples at {samplerate} Hz ({len(audio) / samplerate:.1f}s)")
@@ -69,16 +66,31 @@ def main():
     plot_spectrogram(axes[2], audio, samplerate, log_scale=True)
     plot_mel_spectrogram(axes[3], audio, samplerate)
 
-    fig.suptitle(f"{args.wav_path.name} ({samplerate} Hz)")
+    fig.suptitle(f"{wav_path.name} ({samplerate} Hz)")
     fig.tight_layout()
 
-    args.plots_dir.mkdir(parents=True, exist_ok=True)
-    output_path = args.plots_dir / f"{args.wav_path.stem}.png"
+    plots_dir.mkdir(parents=True, exist_ok=True)
+    output_path = plots_dir / f"{wav_path.stem}.png"
     print(f"Saving to {output_path}...")
     fig.savefig(output_path, dpi=150)
     plt.close(fig)
     print(f"Done: {output_path}")
+    return output_path
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Visualize a recorded .wav file.")
+    parser.add_argument("wav_path", type=Path)
+    parser.add_argument("--plots-dir", type=Path, default=Path("./plots"))
+    args = parser.parse_args()
+
+    try:
+        visualize(args.wav_path, args.plots_dir)
+    except FileNotFoundError:
+        print(f"Error: {args.wav_path} not found")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
