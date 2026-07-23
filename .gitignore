@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+.uv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Audio output + test artifacts + plots
+test-audio/
+audio/
+errors/
+*.wav
+plots/
+
+# Editors
+.vscode/
+*.swp
