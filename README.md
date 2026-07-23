@@ -90,7 +90,8 @@ pytest -v            # verbose output
 
 ## Coming Soon!
 - [ ] Gain switch verification: utility to check/report the state of the Ultramic gain (adjustable via the slider on the side)
-Additional ideas? Please open an issue on [Github](https://github.com/jgers32/ultramic)
+
+> Additional ideas? Please open an issue on [Github](https://github.com/jgers32/ultramic)
 
 ## License
 
