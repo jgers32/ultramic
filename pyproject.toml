@@ -1,6 +1,6 @@
 [project]
 name = "ultramic"
-version = "0.1.2"
+version = "0.1.3"
 description = "Simple, dependency-light continuous recording library for UltraMic USB microphones — install with pip, works anywhere."
 readme = "README.md"
 license = {file = "LICENSE"}

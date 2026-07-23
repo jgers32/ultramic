@@ -32,7 +32,7 @@ uv pip install -e ".[dev,viz]"
 ## Quickstart (CLI)
 
 ```bash
-ultramic-record --audio-dir ./audio --file-duration 600
+ultramic --audio-dir ./audio --file-duration 600
 ```
 
 This will:
@@ -41,7 +41,7 @@ This will:
 3. Record continuously, rotating to a new timestamped `.wav` file every 600 seconds
 4. Log status and errors to `./errors/`
 
-Run `ultramic-record --help` for all options.
+Run `ultramic --help` for all options.
 
 ## Quickstart (Python API)
 
@@ -86,7 +86,11 @@ pytest -v            # verbose output
 ## Platform notes
 
 - **WSL**: the UltraMic must be passed through to WSL with `usbipd bind` / `usbipd attach` before it will be visible to `ultramic`. Without this step, `wait_for_device` will time out as if no device were connected.
-- **Sample rate**: UltraMic devices default to 384kHz, well above what most audio tooling assumes (16–48kHz). If you extend the visualization or add feature extraction, double-check that any library defaults (FFT window size, mel filter count, etc.) are adjusted for this — see `scripts/visualize.py` for an example of tuning `n_fft` and `fmax` for high sample rates.
+- **Sample rate**: UltraMic devices default to 384kHz, well above what most audio tooling assumes (16–48kHz). If you extend the visualization or add feature extraction, double-check that any library defaults (FFT window size, mel filter count, etc.) are adjusted for this — see `src/ultramic/viz.py` for an example of tuning `n_fft` and `fmax` for high sample rates.
+
+## Coming Soon!
+- [ ] Gain switch verification: utility to check/report the state of the Ultramic gain (adjustable via the slider on the side)
+Additional ideas? Please open an issue on [Github](https://github.com/jgers32/ultramic)
 
 ## License
 
