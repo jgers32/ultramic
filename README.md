@@ -16,13 +16,13 @@ Built on [sounddevice](https://python-sounddevice.readthedocs.io/) (PortAudio), 
 ## Installation
 
 ```bash
-pip install git+https://github.com/yourname/ultramic.git
+pip install git+https://github.com/jgers32/ultramic.git
 ```
 
 For local development:
 
 ```bash
-git clone git@github.com:yourname/ultramic.git
+git clone git@github.com:jgers32/ultramic.git
 cd ultramic
 uv venv
 source .venv/bin/activate

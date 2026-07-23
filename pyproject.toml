@@ -2,12 +2,25 @@
 name = "ultramic"
 version = "0.1.0"
 description = "Simple, dependency-light continuous recording library for UltraMic USB microphones — install with pip, works anywhere."
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Julia Gersey", email = "gersey@umich.edu"}]
 requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Sound/Audio :: Capture/Recording",
+]
 dependencies = [
     "sounddevice>=0.4,<1",
     "soundfile>=0.12,<1",
     "numpy>=1.24,<2",
 ]
+
+[project.urls]
+Homepage = "https://github.com/jgers32/ultramic"
+Repository = "https://github.com/jgers32/ultramic"
 
 [project.optional-dependencies]
 dev = ["pytest"]
